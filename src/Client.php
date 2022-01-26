@@ -114,7 +114,9 @@ class Client
             $writer->writeElement('comment', $parcel->getComment());
         }
 
-        $writer->writeElement('partnerId', $parcel->getPartnerId());
+        if ($parcel->hasPartnerId()) {
+            $writer->writeElement('partnerId', $parcel->getPartnerId());
+        }
 
         $writer->startElement('receiverAddressee');
         $writer->writeElement('person_name', $receiver->getName());

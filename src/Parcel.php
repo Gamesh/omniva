@@ -10,22 +10,17 @@ class Parcel
      * weight in kilograms
      */
     private $weight;
-
     private $services;
-
     /**
      * amount in euros
      */
     private $codAmount;
-
     /**
      * bank account number (IBAN)
      */
     private $bankAccount;
-
     private $comment;
     private $partnerId;
-
     private $receiver;
     private $returnee;
     private $sender;
@@ -76,6 +71,11 @@ class Parcel
         $this->partnerId = $partnerId;
 
         return $this;
+    }
+
+    public function hasPartnerId(): bool
+    {
+        return $this->partnerId !== null;
     }
 
     public function getPartnerId(): string
