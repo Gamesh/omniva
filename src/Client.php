@@ -91,9 +91,11 @@ class Client
             $writer->endElement();
         }
 
-        $writer->startElement('measures');
-        $writer->writeAttribute('weight', $parcel->getWeight());
-        $writer->endElement();
+        if ($parcel->hasWeight()) {
+            $writer->startElement('measures');
+            $writer->writeAttribute('weight', $parcel->getWeight());
+            $writer->endElement();
+        }
 
         if ($parcel->getCodAmount()) {
             $writer->startElement('monetary_values');

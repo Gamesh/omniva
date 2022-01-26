@@ -1,8 +1,7 @@
 <?php
 
 namespace Omniva;
-use Omniva\Service;
-use Omniva\Address;
+
 use ArrayIterator;
 
 class Parcel
@@ -38,12 +37,10 @@ class Parcel
         $this->services = new ArrayIterator();
     }
 
-    /**
-     * in grams
-     */
-    public function setWeight(float $weight)
+    public function setWeight(float $weightInGrams): self
     {
-        $this->weight = $weight;
+        $this->weight = $weightInGrams;
+
         return $this;
     }
 
@@ -52,9 +49,15 @@ class Parcel
         return $this->weight;
     }
 
+    public function hasWeight(): bool
+    {
+        return $this->weight !== null;
+    }
+
     public function setComment(string $comment): self
     {
         $this->comment = $comment;
+
         return $this;
     }
 
@@ -71,6 +74,7 @@ class Parcel
     public function setPartnerId(string $partnerId): self
     {
         $this->partnerId = $partnerId;
+
         return $this;
     }
 
@@ -82,6 +86,7 @@ class Parcel
     public function setCodAmount(float $amount): self
     {
         $this->codAmount = $amount;
+
         return $this;
     }
 
@@ -93,6 +98,7 @@ class Parcel
     public function setBankAccount(string $number): self
     {
         $this->bankAccount = $number;
+
         return $this;
     }
 
@@ -109,6 +115,7 @@ class Parcel
     public function addService(Service $service): self
     {
         $this->services->append($service);
+
         return $this;
     }
 
@@ -120,6 +127,7 @@ class Parcel
     public function setSender(Address $sender): self
     {
         $this->sender = $sender;
+
         return $this;
     }
 
@@ -131,6 +139,7 @@ class Parcel
     public function setReceiver(Address $receiver): self
     {
         $this->receiver = $receiver;
+
         return $this;
     }
 
@@ -142,6 +151,7 @@ class Parcel
     public function setReturnee(Address $returnee): self
     {
         $this->returnee = $returnee;
+
         return $this;
     }
 
@@ -163,6 +173,7 @@ class Parcel
     public function setTrackingNumber(string $number): self
     {
         $this->trackingNumber = $number;
+
         return $this;
     }
 }
